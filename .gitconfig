@@ -1,0 +1,90 @@
+[user]
+    # Configure these values with your actual information
+    name = Your Name
+    email = your.email@example.com
+
+[core]
+    editor = cursor
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[init]
+    defaultBranch = main
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[merge]
+    ff = false
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[alias]
+    # Basic aliases
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    ca = commit -a
+    cm = commit -m
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    visual = !gitk
+
+    # Advanced aliases
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --oneline --graph --decorate
+    la = log --oneline --graph --decorate --all
+    amend = commit --amend --reuse-message=HEAD
+    undo = reset --soft HEAD^
+    cleanup = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    root = rev-parse --show-toplevel
+    recent = for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short) %(committerdate:relative)'
+    
+    # Workflow aliases
+    wip = commit -m "WIP"
+    done = commit -m "DONE"
+    fix = commit -m "FIX"
+    feat = commit -m "FEAT"
+    
+    # Branch management
+    new = checkout -b
+    delete = branch -D
+    rename = branch -m
+    
+    # Remote management
+    remote-url = remote get-url origin
+    upstream = remote add upstream
+    sync = "!git fetch upstream && git rebase upstream/main"
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[credential]
+    helper = osxkeychain
+
+[help]
+    autocorrect = 1
+
+[rerere]
+    enabled = true
+
+[tag]
+    sort = version:refname
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
