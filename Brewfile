@@ -54,6 +54,22 @@ cask "apktool"
 cask "dex2jar"
 cask "jd-gui"
 
+# Flutter development tools
+cask "flutter"
+cask "dart"
+cask "fvm"
+# cask "codemagic"
+cask "firebase-cli"
+cask "firebase-emulator"
+
+# KMM development tools
+cask "kotlin"
+cask "kotlin-native"
+# cask "gradle"
+# cask "maven"
+# cask "intellij-idea-ce"
+# cask "android-studio-preview"
+
 # Fonts
 tap "homebrew/cask-fonts"
 cask "font-fira-code"

@@ -22,6 +22,18 @@ A comprehensive dotfiles repository to set up your new MacBook Pro M4 Max for de
 - **JD-GUI** - Java decompiler
 - **Proxyman** - Network debugging
 
+### Flutter Development Tools
+- **Flutter SDK** - Cross-platform UI framework
+- **Dart** - Programming language
+- **FVM** - Flutter version management
+- **Codemagic** - CI/CD for Flutter
+- **Firebase CLI** - Firebase tools
+- **Firebase Emulator** - Local development
+
+### KMM Development Tools
+- **Kotlin** - Programming language
+- **Kotlin/Native** - Native compilation 
+
 ### Browsers
 - **Brave Browser** - Privacy-focused browser
 - **Google Chrome** - Standard web browser
@@ -45,7 +57,6 @@ A comprehensive dotfiles repository to set up your new MacBook Pro M4 Max for de
 
 ### Additional Tools
 - **Rectangle** - Window management
-- **Alfred** - Spotlight replacement
 - **Caffeine** - Prevent sleep
 - **AppCleaner** - App cleanup
 - **The Unarchiver** - Archive extraction
@@ -141,13 +152,25 @@ The setup automatically configures your dock with:
 11. SQLite Browser
 12. Realm Studio
 
-## 🔧 Android Development Features
+## 🔧 Mobile Development Features
 
-### Command Line Tools
+### Android Development
 - **ADB & Fastboot** - Device management and debugging
 - **APKTool** - APK analysis and manipulation
 - **Scrcpy** - Screen mirroring and control
 - **Frida** - Dynamic instrumentation
+
+### Flutter Development
+- **Flutter SDK** - Cross-platform development
+- **Dart** - Programming language
+- **FVM** - Version management
+- **Firebase** - Backend services
+
+### KMM Development
+- **Kotlin** - Multiplatform development
+- **Gradle** - Build automation
+- **Maven** - Dependency management
+- **IntelliJ IDEA** - IDE support
 
 ### Useful Aliases
 - `adb-devices` - List connected devices
@@ -155,13 +178,19 @@ The setup automatically configures your dock with:
 - `adb-install <apk>` - Install APK file
 - `apk-analyze <apk>` - Decompile APK for analysis
 - `apk-security <apk>` - Security analysis of APK
+- `flutter-create <name>` - Create Flutter project
+- `flutter-run <device>` - Run Flutter app
+- `kmm-create <name>` - Create KMM project structure
 
 ### Directory Structure
-- `~/AndroidStudioProjects/` - Android Studio projects
+- `~/Documents/AndroidStudioProjects/` - Android Studio projects
+- `~/Documents/FlutterProjects/` - Flutter projects
+- `~/Documents/KMMProjects/` - KMM projects
 - `~/Android/Sdk/` - Android SDK
 - `~/Android/AVD/` - Android Virtual Devices
 - `~/Android/APKs/` - APK files
-- `~/Android/Logs/` - Development logs
+- `~/.pub-cache/` - Flutter package cache
+- `~/.gradle/` - Gradle cache
 
 ## 🐍 Python Setup
 
@@ -245,9 +274,9 @@ pip3 list --outdated | cut -d ' ' -f1 | xargs -n1 pip3 install -U
 - [Cursor Editor](https://cursor.sh/)
 - [macOS Terminal Guide](https://support.apple.com/guide/terminal/)
 
-## 🤖 Android Development Verification
+## 🤖 Mobile Development Verification
 
-After installation, verify your Android development environment:
+After installation, verify your development environment:
 
 ```bash
 # Check Android SDK tools
@@ -255,26 +284,43 @@ adb version
 fastboot version
 apktool version
 
-# Check Python Android tools
+# Check Flutter
+flutter --version
+dart --version
+fvm --version
+
+# Check KMM tools
+kotlin --version
+gradle --version
+mvn --version
+
+# Check Python tools
 python3 -c "import androguard; print('Androguard installed')"
-python3 -c "import frida; print('Frida installed')"
+python3 -c "import firebase_admin; print('Firebase Admin installed')"
 
-# Check Android Studio
+# Check IDEs
 open -a "Android Studio"
-
-# Test device connection
-adb devices
-
-# Check emulator
-emulator -list-avds
 ```
 
-### Essential Android Development Workflow
+### Essential Development Workflows
+
+#### Android Development
 1. **Device Setup**: Connect device via USB, enable debugging
 2. **APK Analysis**: Use `apk-analyze` for reverse engineering
-3. **Network Debugging**: Use Proxyman/Charles for API testing
-4. **Security Testing**: Use Burp Suite and Frida for penetration testing
-5. **Performance**: Monitor with Android Studio Profiler
+3. **Network Debugging**: Use Proxyman for API testing
+4. **Performance**: Monitor with Android Studio Profiler
+
+#### Flutter Development
+1. **Project Creation**: Use `flutter-create <name>` for new projects
+2. **Device Management**: Use `flutter devices` to see available devices
+3. **Building**: Use `flutter-build <platform>` for releases
+4. **Firebase Integration**: Use Firebase CLI and emulator
+
+#### KMM Development
+1. **Project Structure**: Use `kmm-create <name>` for new projects
+2. **Shared Module**: Develop common Kotlin code
+3. **Platform Modules**: Build Android and iOS specific code
+4. **Build Automation**: Use Gradle for multi-platform builds
 
 ## 🤝 Contributing
 

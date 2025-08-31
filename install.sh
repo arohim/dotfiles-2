@@ -167,6 +167,24 @@ brew install --cask apktool                  # APK analysis
 brew install --cask dex2jar                  # APK to JAR conversion
 brew install --cask jd-gui                   # Java decompiler
 
+# Install Flutter development tools
+echo "🦋 Installing Flutter development tools..."
+brew install --cask flutter                  # Flutter SDK
+brew install --cask dart                     # Dart programming language
+brew install --cask fvm                      # Flutter version management
+# brew install --cask codemagic                # CI/CD for Flutter
+brew install --cask firebase-cli             # Firebase tools
+brew install --cask firebase-emulator        # Firebase local emulator
+
+# Install KMM development tools
+echo "📱 Installing KMM development tools..."
+brew install --cask kotlin                   # Kotlin compiler
+brew install --cask kotlin-native            # Kotlin/Native
+# brew install --cask gradle                    # Build tool
+# brew install --cask maven                     # Dependency management
+# brew install --cask intellij-idea-ce         # IntelliJ IDEA Community
+# brew install --cask android-studio-preview   # Android Studio Preview (for latest features)
+
 # Configure Git
 echo "🔧 Configuring Git..."
 if ! git config --global user.name &> /dev/null; then
@@ -194,6 +212,13 @@ pip3 install apktool             # APK manipulation
 # pip3 install frida-tools         # Dynamic instrumentation
 # pip3 install objection            # Runtime mobile exploration
 
+# Install Flutter development Python packages
+echo "🐍 Installing Flutter development Python packages..."
+pip3 install firebase-admin      # Firebase admin SDK
+pip3 install google-cloud-storage # Google Cloud Storage
+pip3 install google-auth         # Google authentication
+pip3 install requests-oauthlib   # OAuth for API calls
+
 # Create development directories
 echo "📁 Creating development directories..."
 mkdir -p ~/Projects
@@ -206,6 +231,24 @@ mkdir -p ~/Android/AVD
 mkdir -p ~/Android/Logs
 mkdir -p ~/Android/APKs
 mkdir -p ~/Android/Backups
+
+# Create Flutter development directories
+echo "📁 Creating Flutter development directories..."
+mkdir -p ~/Documents/FlutterProjects
+mkdir -p ~/Documents/FlutterProjects/Apps
+mkdir -p ~/Documents/FlutterProjects/Packages
+mkdir -p ~/Documents/FlutterProjects/Plugins
+mkdir -p ~/.pub-cache
+mkdir -p ~/.pub-cache/bin
+
+# Create KMM development directories
+echo "📁 Creating KMM development directories..."
+mkdir -p ~/Documents/KMMProjects
+mkdir -p ~/Documents/KMMProjects/Shared
+mkdir -p ~/Documents/KMMProjects/Android
+mkdir -p ~/Documents/KMMProjects/iOS
+mkdir -p ~/.gradle
+mkdir -p ~/.m2
 
 echo "✅ Setup complete! Your MacBook Pro M4 Max is ready for development."
 echo "🔄 Please restart your computer to ensure all changes take effect."

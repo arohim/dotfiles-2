@@ -74,6 +74,20 @@ alias apkleaks='apkleaks'
 alias frida='frida'
 alias objection='objection'
 
+# Flutter development aliases
+alias flutter='flutter'
+alias dart='dart'
+alias fvm='fvm'
+alias firebase='firebase'
+# alias codemagic='codemagic'
+
+# KMM development aliases
+alias kotlin='kotlin'
+alias kotlinc='kotlinc'
+# alias gradle='gradle'
+# alias mvn='mvn'
+# alias idea='intellij-idea-ce'
+
 # macOS specific
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
 alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
@@ -171,6 +185,86 @@ function apk-security() {
     apkleaks -f "$1"
 }
 
+# Flutter development functions
+function flutter-create() {
+    if [ -z "$1" ]; then
+        echo "Usage: flutter-create <project-name>"
+        return 1
+    fi
+    flutter create "$1"
+    cd "$1"
+    echo "Flutter project '$1' created successfully!"
+}
+
+function flutter-run() {
+    if [ -z "$1" ]; then
+        echo "Usage: flutter-run <device-id>"
+        echo "Available devices:"
+        flutter devices
+        return 1
+    fi
+    flutter run -d "$1"
+}
+
+function flutter-build() {
+    if [ -z "$1" ]; then
+        echo "Usage: flutter-build <platform>"
+        echo "Platforms: apk, appbundle, ios"
+        return 1
+    fi
+    case "$1" in
+        "apk") flutter build apk --release ;;
+        "appbundle") flutter build appbundle --release ;;
+        "ios") flutter build ios --release ;;
+        *) echo "Unknown platform: $1" ;;
+    esac
+}
+
+function flutter-clean() {
+    flutter clean
+    flutter pub get
+    echo "Flutter project cleaned and dependencies refreshed!"
+}
+
+# KMM development functions
+function kmm-create() {
+    if [ -z "$1" ]; then
+        echo "Usage: kmm-create <project-name>"
+        return 1
+    fi
+    mkdir -p "$1"
+    cd "$1"
+    
+    # Create basic KMM structure
+    mkdir -p shared/src/commonMain/kotlin
+    mkdir -p shared/src/androidMain/kotlin
+    mkdir -p shared/src/iosMain/kotlin
+    mkdir -p androidApp/src/main/kotlin
+    mkdir -p iosApp/iosApp
+    
+    echo "KMM project structure created for '$1'"
+    echo "Next steps:"
+    echo "1. Initialize Gradle project"
+    echo "2. Configure shared module"
+    echo "3. Set up Android and iOS modules"
+}
+
+# function gradle-build() {
+#     if [ -z "$1" ]; then
+#         echo "Usage: gradle-build <module>"
+#         return 1
+#     fi
+#     cd "$1" && gradle build
+# }
+
+# function mvn-install() {
+#     if [ -z "$1" ]; then
+#         echo "Usage: mvn-install <project-path>"
+#         return 1
+#     fi
+#     cd "$1" && mvn clean install
+# }
+
 # Environment variables
 export EDITOR='cursor'
 export VISUAL='cursor'
@@ -198,9 +292,29 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # Flutter
 export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
+export FLUTTER_ROOT=$HOME/flutter
+export DART_SDK=$HOME/flutter/bin/cache/dart-sdk
+export PUB_HOSTED_URL=https://pub.dev
+export FLUTTER_STORAGE_BASE_URL=https://storage.googleapis.com
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_OPTS="-Xmx4g -XX:+UseG1GC"
+
+# Kotlin
+export KOTLIN_HOME=/usr/local/opt/kotlin
+export PATH=$PATH:$KOTLIN_HOME/bin
+
+# Gradle
+# export GRADLE_HOME=/usr/local/opt/gradle
+# export PATH=$PATH:$GRADLE_HOME/bin
+# export GRADLE_OPTS="-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs=-Xmx4g"
+
+# # Maven
+# export MAVEN_HOME=/usr/local/opt/maven
+# export PATH=$PATH:$MAVEN_HOME/bin
+# export MAVEN_OPTS="-Xmx2g"
 
 # History configuration
 HISTSIZE=10000
@@ -219,7 +333,9 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Welcome message
-echo "🚀 Welcome to your MacBook Pro M4 Max Android development environment!"
-echo "📱 Android Studio, Cursor, and all development tools are ready to use."
-echo "🔧 Android-specific aliases: adb-devices, adb-logcat, apk-analyze, apk-security"
+echo "🚀 Welcome to your MacBook Pro M4 Max Mobile Development environment!"
+echo "📱 Android Studio, Flutter, KMM, and all development tools are ready to use."
+echo "🔧 Android aliases: adb-devices, adb-logcat, apk-analyze, apk-security"
+echo "🦋 Flutter aliases: flutter-create, flutter-run, flutter-build, flutter-clean"
+echo "📱 KMM aliases: kmm-create, gradle-build, mvn-install"
 echo "💡 Type 'help' for available commands or check the README.md"
