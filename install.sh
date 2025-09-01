@@ -39,9 +39,7 @@ xcode-select --install || true
 echo "📚 Installing development tools..."
 brew install git node python@3.11 sqlite
 
-# Install Claude CLI
-echo "🤖 Installing Claude CLI..."
-brew install claude
+# Claude Code CLI will be installed via npm (see Node.js packages section)
 
 # Install GUI applications
 echo "🖥️ Installing GUI applications..."
@@ -138,7 +136,7 @@ dockutil --no-restart --add "/Applications/zoom.us.app"
 dockutil --no-restart --add "/Applications/DB Browser for SQLite.app"
 dockutil --no-restart --add "/Applications/Realm Studio.app"
 dockutil --no-restart --add "/Applications/Figma.app"
-dockutil --no-restart --add "/Applications/Claude.app"
+# Claude Code CLI is command-line only (no GUI app to add to dock)
 
 # Restart dock
 killall Dock
@@ -215,6 +213,10 @@ python3 -m pip install --user --break-system-packages requests beautifulsoup4 pa
 # Install Node.js packages
 echo "📦 Installing Node.js packages..."
 npm install -g yarn typescript ts-node nodemon
+
+# Install Claude Code CLI
+echo "🤖 Installing Claude Code CLI..."
+npm install -g @anthropic-ai/claude-code
 
 # Install Android development Python packages
 echo "🐍 Installing Android development Python packages..."

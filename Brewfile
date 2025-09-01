@@ -11,7 +11,7 @@ brew "node"
 brew "python@3.11"
 brew "sqlite"
 brew "dockutil"
-brew "claude"
+# Claude Code CLI installed via npm (see install.sh)
 
 # GUI Applications (Casks)
 cask "android-studio"

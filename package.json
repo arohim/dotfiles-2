@@ -9,6 +9,7 @@
   },
   "devDependencies": {},
   "globalDependencies": {
+    "@anthropic-ai/claude-code": "^1.0.0",
     "typescript": "^5.2.0",
     "ts-node": "^10.9.0",
     "nodemon": "^3.0.0",
